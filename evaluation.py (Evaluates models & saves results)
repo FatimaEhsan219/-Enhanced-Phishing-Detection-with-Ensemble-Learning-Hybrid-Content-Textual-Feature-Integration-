@@ -28,7 +28,7 @@ def evaluate_models():
     with open("results/evaluation_metrics.json", "w") as f:
         json.dump(results, f, indent=4)
 
-    print("✅ Evaluation completed. Results saved!")
+    print("Evaluation completed. Results saved!")
 
 if __name__ == "__main__":
     evaluate_models()
