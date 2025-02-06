@@ -21,7 +21,7 @@ def extract_features():
     y = df['label'].values
 
     np.savez("data/features.npz", X=X_final, y=y)
-    print("✅ Features extracted and saved successfully!")
+    print("Features extracted and saved successfully!")
 
 if __name__ == "__main__":
     extract_features()
