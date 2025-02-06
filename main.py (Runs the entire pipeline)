@@ -1,0 +1,16 @@
+import os
+from src import preprocess, feature_extraction, model_training, evaluation
+
+def main():
+    """Runs all steps: Preprocessing → Feature Extraction → Training → Evaluation"""
+    print("🚀 Running Phishing Email Detection Pipeline...")
+    
+    preprocess.preprocess_data()
+    feature_extraction.extract_features()
+    model_training.train_models()
+    evaluation.evaluate_models()
+
+    print("🎉 Pipeline execution complete!")
+
+if __name__ == "__main__":
+    main()
