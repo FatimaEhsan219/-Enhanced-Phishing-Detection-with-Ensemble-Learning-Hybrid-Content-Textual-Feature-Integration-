@@ -1,0 +1,26 @@
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+import joblib
+
+def train_models():
+    """Trains Decision Tree and KNN models."""
+    data = np.load("data/features.npz")
+    X, y = data["X"], data["y"]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+    dt = DecisionTreeClassifier()
+    knn = KNeighborsClassifier()
+
+    dt.fit(X_train, y_train)
+    knn.fit(X_train, y_train)
+
+    joblib.dump(dt, "models/dt_model.pkl")
+    joblib.dump(knn, "models/knn_model.pkl")
+
+    print("✅ Models trained and saved successfully!")
+
+if __name__ == "__main__":
+    train_models()
