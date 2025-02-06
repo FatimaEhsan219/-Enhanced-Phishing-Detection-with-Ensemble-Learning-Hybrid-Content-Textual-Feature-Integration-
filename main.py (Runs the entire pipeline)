@@ -10,7 +10,7 @@ def main():
     model_training.train_models()
     evaluation.evaluate_models()
 
-    print("🎉 Pipeline execution complete!")
+    print("Pipeline execution complete!")
 
 if __name__ == "__main__":
     main()
