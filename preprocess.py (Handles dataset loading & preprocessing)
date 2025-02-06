@@ -1,0 +1,45 @@
+import pandas as pd
+import os
+import re
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from tqdm import tqdm
+
+nltk.download('punkt')
+nltk.download('stopwords')
+
+def load_data():
+    """Loads phishing and benign email datasets."""
+    enron_df = pd.read_csv("data/enron.csv")
+    spamassassin_df = pd.read_csv("data/spamassassin.csv")
+    nazario_df = pd.read_csv("data/nazario.csv")
+
+    phishing_df = pd.concat([nazario_df], ignore_index=True)
+    benign_df = pd.concat([enron_df, spamassassin_df], ignore_index=True)
+
+    return phishing_df, benign_df
+
+def clean_text(text):
+    """Preprocesses text by removing special characters and stopwords."""
+    text = re.sub(r'\W', ' ', str(text))
+    tokens = word_tokenize(text.lower())
+    tokens = [word for word in tokens if word not in stopwords.words('english')]
+    return ' '.join(tokens)
+
+def preprocess_data():
+    """Applies preprocessing on datasets."""
+    phishing_df, benign_df = load_data()
+    
+    phishing_df['label'] = 1
+    benign_df['label'] = 0
+
+    phishing_df['text'] = phishing_df['text'].apply(clean_text)
+    benign_df['text'] = benign_df['text'].apply(clean_text)
+
+    combined_df = pd.concat([phishing_df, benign_df], ignore_index=True)
+    combined_df.to_csv("data/processed_emails.csv", index=False)
+    print("✅ Preprocessed data saved successfully!")
+
+if __name__ == "__main__":
+    preprocess_data()
