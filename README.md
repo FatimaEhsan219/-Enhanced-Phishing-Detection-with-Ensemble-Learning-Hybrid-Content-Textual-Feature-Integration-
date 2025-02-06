@@ -10,7 +10,23 @@ This project presents a **phishing email detection methodology** that combines *
 - **Rich Dataset**: Trained on a dataset with **32,051 benign** and **3,460 phishing** emails.
 
 ## 📂 Repository Structure
-📁 Phishing-Detection │-- 📂 code/ # Python scripts for feature extraction & model training │-- 📂 data/ # Dataset (if included) │-- 📂 notebooks/ # Google Colab notebooks │-- 📄 README.md # Project documentation │-- 📄 requirements.txt # Required dependencies │-- 📄 LICENSE # License file
+/Phishing-Email-Detection
+│── README.md               # Already written
+│── requirements.txt        # Dependencies for the project
+│── data/
+│   ├── phishing_emails.csv # Processed dataset
+│   ├── benign_emails.csv   # Processed dataset
+│── notebooks/
+│   ├── phishing_detection.ipynb  # Google Colab notebook for training & evaluation
+│── src/
+│   ├── preprocess.py        # Script for data preprocessing
+│   ├── feature_extraction.py # Script for feature extraction
+│   ├── ensemble_model.py    # Script for training ensemble models
+│── results/
+│   ├── evaluation_metrics.txt # Contains F1, Accuracy, Precision, Recall, etc.
+│   ├── confusion_matrix.png   # Image of confusion matrix
+│── LICENSE                  # Open-source license (e.g., MIT)
+│── .gitignore               # Ignore unnecessary files
 
 
 Run the Google Colab notebook
